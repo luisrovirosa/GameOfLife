@@ -15,6 +15,7 @@ class World {
       $cells[0]->addNeighbor($cells[2]);
       $cells[1]->addNeighbor($cells[2]);
       $cells[2]->addNeighbor($cells[0]);
+      $cells[2]->addNeighbor($cells[1]);
     }
   }
 }
