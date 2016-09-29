@@ -4,9 +4,8 @@ namespace GameOfLife;
 
 class PopulatedCell extends Cell {
   public function nextDay() {
-    if ($this->numberOfNeigbors <= 1 || $this->numberOfNeigbors >= 4) {
-      return new EmptyCell();
-    }
-    return new PopulatedCell();
+    return $this->numberOfNeigbors == 2 || $this->numberOfNeigbors == 3
+      ? new PopulatedCell()
+      : new EmptyCell();
   }
 }
