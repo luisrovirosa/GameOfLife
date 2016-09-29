@@ -4,15 +4,12 @@ namespace GameOfLife;
 class EmptyCell extends Cell {
 
   /**
-   * EmptyCell constructor.
-   */
-  public function __construct() {
-  }
-
-  /**
    * @return \GameOfLife\EmptyCell
    */
   public function nextDay() {
+    if ($this->numberOfNeigbors == 2) {
+      return new PopulatedCell();
+    }
     return new EmptyCell();
   }
 }
