@@ -6,10 +6,6 @@ use GameOfLife\EmptyCell;
 use GameOfLife\PopulatedCell;
 
 class CellTest extends \PHPUnit_Framework_TestCase {
-  // A populated cell with three neighbors survives
-
-  // Each cells knows their neighbors
-  // Each cells knows their next day status
   /** @test */
   public function an_empty_cell_with_no_neighbors_remains_empty() {
     $cell = new EmptyCell();
@@ -101,6 +97,18 @@ class CellTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function an_empty_cell_with_three_neighbors_becomes_populates() {
     $cell = new EmptyCell();
+    $cell->addNeighbor(new PopulatedCell());
+    $cell->addNeighbor(new PopulatedCell());
+    $cell->addNeighbor(new PopulatedCell());
+
+    $nextDayCell = $cell->nextDay();
+
+    $this->assertEquals(new PopulatedCell(), $nextDayCell);
+  }
+
+  /** @test */
+  public function a_populated_cell_with_three_neighbors_survives() {
+    $cell = new PopulatedCell();
     $cell->addNeighbor(new PopulatedCell());
     $cell->addNeighbor(new PopulatedCell());
     $cell->addNeighbor(new PopulatedCell());
