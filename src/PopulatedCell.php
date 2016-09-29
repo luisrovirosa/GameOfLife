@@ -20,7 +20,7 @@ class PopulatedCell extends Cell {
   }
 
   public function nextDay() {
-    if ($this->numberOfNeigbors == 0) {
+    if ($this->numberOfNeigbors <= 1) {
       return new EmptyCell();
     }
     return new PopulatedCell();
