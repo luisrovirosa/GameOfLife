@@ -10,8 +10,14 @@ class World {
    */
   public function __construct($cells) {
     for ($i = 0; $i < count($cells); $i++) {
-      $cells[$i]->addNeighbor($cells[($i + 1) % count($cells)]);
-      $cells[$i]->addNeighbor($cells[($i + 2) % count($cells)]);
+      $nextIndex = ($i + 1) % count($cells);
+      if ($i != $nextIndex) {
+        $cells[$i]->addNeighbor($cells[$nextIndex]);
+      }
+      $previousIndex = ($i + 2) % count($cells);
+      if ($i != $previousIndex) {
+        $cells[$i]->addNeighbor($cells[$previousIndex]);
+      }
     }
   }
 }

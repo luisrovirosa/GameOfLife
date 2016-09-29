@@ -71,4 +71,16 @@ class WorldTest extends \PHPUnit_Framework_TestCase {
 
     $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
   }
+
+  /** @test */
+  public function a_cell_is_not_neighbor_of_himself() {
+    $cellProphecy = $this->prophesize(Cell::class);
+    $cell = $cellProphecy->reveal();
+    $cells = [$cell, $this->prophesize(Cell::class)->reveal()];
+
+    new World($cells);
+
+    $cellProphecy->addNeighbor($cell)->shouldNotHaveBeenCalled();
+  }
+
 }
