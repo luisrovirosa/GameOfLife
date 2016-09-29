@@ -18,9 +18,10 @@ class World {
   }
 
   public function nextDay() {
-    /** @var Cell $cell */
-    foreach ($this->cells[0] as $cell) {
-      $cell->nextDay();
+    for ($i = 0; $i < count($this->cells[0]); $i++) {
+      /** @var Cell $cell */
+      $cell = $this->cells[0][$i];
+      $this->cells[0][$i] = $cell->nextDay();
     }
   }
 
