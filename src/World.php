@@ -14,6 +14,10 @@ class World {
    */
   public function __construct($cells) {
     $this->cells = $cells;
+    $this->initialize();
+  }
+
+  private function initialize() {
     for ($i = 0; $i < count($this->cells); $i++) {
       $nextIndex = ($i + 1) % count($this->cells);
       if ($i != $nextIndex) {
