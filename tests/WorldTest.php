@@ -83,4 +83,20 @@ class WorldTest extends \PHPUnit_Framework_TestCase {
     $cellProphecy->addNeighbor($cell)->shouldNotHaveBeenCalled();
   }
 
+  /** @test */
+  public function a_one_dimension_world_with_four_cells_is_not_connected_the_first_and_the_third() {
+    $cellProphecy = $this->prophesize(Cell::class);
+    $neighbor = $this->prophesize(Cell::class)->reveal();
+    $cells = [
+      $cellProphecy->reveal(),
+      $this->prophesize(Cell::class)->reveal(),
+      $neighbor,
+      $this->prophesize(Cell::class)->reveal()
+    ];
+
+    new World($cells);
+
+    $cellProphecy->addNeighbor($neighbor)->shouldNotHaveBeenCalled();
+  }
+
 }
