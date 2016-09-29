@@ -118,4 +118,16 @@ class CellTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals(new PopulatedCell(), $nextDayCell);
   }
 
+  /** @test */
+  public function add_twice_the_same_neighbor_count_as_one_neighbor() {
+    $cell = new PopulatedCell();
+    $neighbor = new PopulatedCell();
+    $cell->addNeighbor($neighbor);
+    $cell->addNeighbor($neighbor);
+
+    $nextDayCell = $cell->nextDay();
+
+    $this->assertEquals(new EmptyCell(), $nextDayCell);
+  }
+
 }
