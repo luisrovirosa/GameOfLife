@@ -18,4 +18,6 @@ abstract class Cell {
       $this->numberOfNeigbors++;
     }
   }
+
+  abstract function nextDay();
 }

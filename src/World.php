@@ -50,4 +50,8 @@ class World {
     }
     $this->cells[$cellIndex]->addNeighbor($this->cells[$neighborIndex]);
   }
+
+  public function nextDay() {
+    $this->cells[0]->nextDay();
+  }
 }
