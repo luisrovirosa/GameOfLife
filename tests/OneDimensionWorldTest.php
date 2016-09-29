@@ -109,4 +109,14 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
     $cellProphecy->nextDay()->shouldHaveBeenCalled();
   }
 
+  /** @test */
+  public function next_day_calls_next_day_of_the_second_cell() {
+    $cellProphecy = $this->prophesize(Cell::class);
+    $cells = [$this->prophesize(Cell::class)->reveal(), $cellProphecy->reveal()];
+
+    (new World($cells))->nextDay();
+
+    $cellProphecy->nextDay()->shouldHaveBeenCalled();
+  }
+
 }

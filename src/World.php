@@ -53,5 +53,8 @@ class World {
 
   public function nextDay() {
     $this->cells[0]->nextDay();
+    if (count($this->cells) == 2) {
+      $this->cells[1]->nextDay();
+    }
   }
 }
