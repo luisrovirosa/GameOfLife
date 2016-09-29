@@ -3,20 +3,25 @@
 namespace GameOfLife;
 
 class World {
+  /**
+   * @var array
+   */
+  private $cells;
 
   /**
    * World constructor.
    * @param array $cells
    */
   public function __construct($cells) {
-    for ($i = 0; $i < count($cells); $i++) {
-      $nextIndex = ($i + 1) % count($cells);
+    $this->cells = $cells;
+    for ($i = 0; $i < count($this->cells); $i++) {
+      $nextIndex = ($i + 1) % count($this->cells);
       if ($i != $nextIndex) {
-        $cells[$i]->addNeighbor($cells[$nextIndex]);
+        $this->cells[$i]->addNeighbor($this->cells[$nextIndex]);
       }
-      $previousIndex = ($i + 2) % count($cells);
+      $previousIndex = ($i + 2) % count($this->cells);
       if ($i != $previousIndex) {
-        $cells[$i]->addNeighbor($cells[$previousIndex]);
+        $this->cells[$i]->addNeighbor($this->cells[$previousIndex]);
       }
     }
   }
