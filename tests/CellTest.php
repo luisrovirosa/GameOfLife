@@ -36,4 +36,13 @@ class CellTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals(new PopulatedCell(), $nextDayCell);
   }
 
+  /** @test */
+  public function a_cell_with_no_neighbors_dies_by_solitude() {
+    $cell = new PopulatedCell();
+
+    $nextDayCell = $cell->nextDay();
+
+    $this->assertEquals(new EmptyCell(), $nextDayCell);
+  }
+
 }
