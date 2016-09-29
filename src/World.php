@@ -26,35 +26,39 @@ class World {
 
   private function initialize() {
     for ($i = 0; $i < count($this->cells[0]); $i++) {
-      $this->connectsNextCell($i);
-      $this->connectsPreviousCell($i);
+      $this->connectsNextCell(0, $i);
+      $this->connectsPreviousCell(0, $i);
     }
   }
 
   /**
-   * @param $i
+   * @param $x
+   * @param $y
    */
-  private function connectsNextCell($i) {
-    $this->addNeighbor($i, ($i + 1) % count($this->cells[0]));
+  private function connectsNextCell($x, $y) {
+    $this->addNeighbor($x, $y, $x, ($y + 1) % count($this->cells[$x]));
   }
 
   /**
-   * @param $i
+   * @param $x
+   * @param $y
    */
-  private function connectsPreviousCell($i) {
-    if (count($this->cells[0]) != 2) {
-      $this->addNeighbor($i, ($i + count($this->cells[0]) - 1) % count($this->cells[0]));
+  private function connectsPreviousCell($x, $y) {
+    if (count($this->cells[$x]) != 2) {
+      $this->addNeighbor($x, $y, $x, ($y + count($this->cells[$x]) - 1) % count($this->cells[$x]));
     }
   }
 
   /**
-   * @param $cellIndex
-   * @param $neighborIndex
+   * @param $cellX
+   * @param $cellY
+   * @param $neighborX
+   * @param $neighborY
    */
-  private function addNeighbor($cellIndex, $neighborIndex) {
-    if ($cellIndex == $neighborIndex) {
+  private function addNeighbor($cellX, $cellY, $neighborX, $neighborY) {
+    if ($cellY == $neighborY) {
       return;
     }
-    $this->cells[0][$cellIndex]->addNeighbor($this->cells[0][$neighborIndex]);
+    $this->cells[$cellX][$cellY]->addNeighbor($this->cells[$neighborX][$neighborY]);
   }
 }
