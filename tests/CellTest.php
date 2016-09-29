@@ -8,7 +8,6 @@ use GameOfLife\PopulatedCell;
 class CellTest extends \PHPUnit_Framework_TestCase {
   // A populated cell with three neighbors survives
 
-  // A cell with no neighbors dies by solitude
   // A cell with four neighbors dies by overpopulation
 
   // A empty cell with two neighbors becomes populates
@@ -39,6 +38,17 @@ class CellTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function a_cell_with_no_neighbors_dies_by_solitude() {
     $cell = new PopulatedCell();
+
+    $nextDayCell = $cell->nextDay();
+
+    $this->assertEquals(new EmptyCell(), $nextDayCell);
+  }
+
+  /** @test */
+  public function a_cell_with_two_empty_neighbors_dies_by_solitude() {
+    $cell = new PopulatedCell();
+    $cell->addNeighbor(new EmptyCell());
+    $cell->addNeighbor(new EmptyCell());
 
     $nextDayCell = $cell->nextDay();
 

@@ -2,7 +2,7 @@
 
 namespace GameOfLife;
 
-class PopulatedCell {
+class PopulatedCell extends Cell {
   /** @var  int */
   private $numberOfNeigbors;
 
@@ -13,8 +13,10 @@ class PopulatedCell {
     $this->numberOfNeigbors = 0;
   }
 
-  public function addNeighbor(PopulatedCell $cell) {
-    $this->numberOfNeigbors++;
+  public function addNeighbor(Cell $cell) {
+    if ($cell instanceof PopulatedCell) {
+      $this->numberOfNeigbors++;
+    }
   }
 
   public function nextDay() {

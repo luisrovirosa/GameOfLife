@@ -1,7 +1,7 @@
 <?php
 namespace GameOfLife;
 
-class EmptyCell {
+class EmptyCell extends Cell {
 
   /**
    * EmptyCell constructor.
