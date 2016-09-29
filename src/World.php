@@ -28,6 +28,7 @@ class World {
     for ($i = 0; $i < count($this->cells[0]); $i++) {
       $this->connectsNextCell(0, $i);
       $this->connectsPreviousCell(0, $i);
+      $this->connectsBottomCell(0, $i);
     }
   }
 
@@ -49,6 +50,10 @@ class World {
     }
   }
 
+  private function connectsBottomCell($x, $y) {
+    $this->addNeighbor($x, $y, ($x + 1) % count($this->cells), $y);
+  }
+
   /**
    * @param $cellX
    * @param $cellY
@@ -56,7 +61,8 @@ class World {
    * @param $neighborY
    */
   private function addNeighbor($cellX, $cellY, $neighborX, $neighborY) {
-    if ($cellY == $neighborY) {
+    $isSameNeighbor = $cellX == $neighborX && $cellY == $neighborY;
+    if ($isSameNeighbor) {
       return;
     }
     $this->cells[$cellX][$cellY]->addNeighbor($this->cells[$neighborX][$neighborY]);
