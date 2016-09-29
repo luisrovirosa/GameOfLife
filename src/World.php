@@ -19,14 +19,19 @@ class World {
 
   private function initialize() {
     for ($i = 0; $i < count($this->cells); $i++) {
-      $nextIndex = ($i + 1) % count($this->cells);
-      if ($i != $nextIndex) {
-        $this->cells[$i]->addNeighbor($this->cells[$nextIndex]);
-      }
-      $previousIndex = ($i + 2) % count($this->cells);
-      if ($i != $previousIndex) {
-        $this->cells[$i]->addNeighbor($this->cells[$previousIndex]);
-      }
+      $this->addNeighbor($i, ($i + 1) % count($this->cells));
+      $this->addNeighbor($i, ($i + 2) % count($this->cells));
     }
+  }
+
+  /**
+   * @param $cellIndex
+   * @param $neighborIndex
+   */
+  private function addNeighbor($cellIndex, $neighborIndex) {
+    if ($cellIndex == $neighborIndex) {
+      return;
+    }
+    $this->cells[$cellIndex]->addNeighbor($this->cells[$neighborIndex]);
   }
 }
