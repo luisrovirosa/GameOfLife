@@ -3,9 +3,9 @@
 namespace GameOfLife\Tests;
 
 use GameOfLife\EmptyCell;
+use GameOfLife\PopulatedCell;
 
 class CellTest extends \PHPUnit_Framework_TestCase {
-  // A populated cell with two neighbors survives
   // A populated cell with three neighbors survives
 
   // A cell with no neighbors dies by solitude
@@ -24,4 +24,16 @@ class CellTest extends \PHPUnit_Framework_TestCase {
 
     $this->assertEquals(new EmptyCell(), $nextDayCell);
   }
+
+  /** @test */
+  public function a_populated_cell_with_two_neighbors_survives() {
+    $cell = new PopulatedCell();
+    $cell->addNeighbor(new PopulatedCell());
+    $cell->addNeighbor(new PopulatedCell());
+
+    $nextDayCell = $cell->nextDay();
+
+    $this->assertEquals(new PopulatedCell(), $nextDayCell);
+  }
+
 }
