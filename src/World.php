@@ -25,10 +25,12 @@ class World {
   }
 
   private function initialize() {
-    for ($i = 0; $i < count($this->cells[0]); $i++) {
-      $this->connectsNextCell(0, $i);
-      $this->connectsPreviousCell(0, $i);
-      $this->connectsBottomCell(0, $i);
+    for ($file = 0; $file < count($this->cells); $file++) {
+      for ($column = 0; $column < count($this->cells[$file]); $column++) {
+        $this->connectsNextCell($file, $column);
+        $this->connectsPreviousCell($file, $column);
+        $this->connectsBottomCell($file, $column);
+      }
     }
   }
 
@@ -52,6 +54,10 @@ class World {
 
   private function connectsBottomCell($x, $y) {
     $this->addNeighbor($x, $y, ($x + 1) % count($this->cells), $y);
+  }
+
+  private function connectsUpperCell($x, $y) {
+    $this->addNeighbor($x, $y, ($x + count($this->cells) - 1) % count($this->cells), $y);
   }
 
   /**
