@@ -8,7 +8,6 @@ use GameOfLife\PopulatedCell;
 class CellTest extends \PHPUnit_Framework_TestCase {
   // A populated cell with three neighbors survives
 
-  // A empty cell with two neighbors becomes populates
   // A empty cell with three neighbors becomes populates
 
   // Each cells knows their neighbors
@@ -34,7 +33,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_cell_with_no_neighbors_dies_by_solitude() {
+  public function a_populated_cell_with_no_neighbors_dies_by_solitude() {
     $cell = new PopulatedCell();
 
     $nextDayCell = $cell->nextDay();
@@ -43,7 +42,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_cell_with_two_empty_neighbors_dies_by_solitude() {
+  public function a_populated_cell_with_two_empty_neighbors_dies_by_solitude() {
     $cell = new PopulatedCell();
     $cell->addNeighbor(new EmptyCell());
     $cell->addNeighbor(new EmptyCell());
@@ -54,7 +53,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_cell_with_one_neighbor_dies_by_solitude() {
+  public function a_populated_cell_with_one_neighbor_dies_by_solitude() {
     $cell = new PopulatedCell();
     $cell->addNeighbor(new PopulatedCell());
 
@@ -64,7 +63,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_cell_with_four_neighbor_dies_by_overpopulation() {
+  public function a_populated_cell_with_four_neighbor_dies_by_overpopulation() {
     $cell = new PopulatedCell();
     $cell->addNeighbor(new PopulatedCell());
     $cell->addNeighbor(new PopulatedCell());
@@ -77,7 +76,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_cell_with_five_neighbor_dies_by_overpopulation() {
+  public function a_populated_cell_with_five_neighbor_dies_by_overpopulation() {
     $cell = new PopulatedCell();
     $cell->addNeighbor(new PopulatedCell());
     $cell->addNeighbor(new PopulatedCell());
