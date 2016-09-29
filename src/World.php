@@ -19,10 +19,24 @@ class World {
 
   private function initialize() {
     for ($i = 0; $i < count($this->cells); $i++) {
-      $this->addNeighbor($i, ($i + 1) % count($this->cells));
-      if (count($this->cells) != 2) {
-        $this->addNeighbor($i, ($i + count($this->cells) - 1) % count($this->cells));
-      }
+      $this->connectsNextCell($i);
+      $this->connectsPreviousCell($i);
+    }
+  }
+
+  /**
+   * @param $i
+   */
+  private function connectsNextCell($i) {
+    $this->addNeighbor($i, ($i + 1) % count($this->cells));
+  }
+
+  /**
+   * @param $i
+   */
+  private function connectsPreviousCell($i) {
+    if (count($this->cells) != 2) {
+      $this->addNeighbor($i, ($i + count($this->cells) - 1) % count($this->cells));
     }
   }
 
