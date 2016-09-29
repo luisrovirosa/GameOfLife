@@ -4,12 +4,11 @@ namespace GameOfLife;
 class EmptyCell extends Cell {
 
   /**
-   * @return \GameOfLife\EmptyCell
+   * @return \GameOfLife\Cell
    */
   public function nextDay() {
-    if ($this->numberOfNeigbors == 2 || $this->numberOfNeigbors == 3) {
-      return new PopulatedCell();
-    }
-    return new EmptyCell();
+    return $this->numberOfNeigbors == 2 || $this->numberOfNeigbors == 3
+      ? new PopulatedCell()
+      : new EmptyCell();
   }
 }
