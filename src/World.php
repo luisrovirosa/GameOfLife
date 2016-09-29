@@ -13,6 +13,7 @@ class World {
     $cells[1]->addNeighbor($cells[0]);
     if (count($cells) == 3) {
       $cells[0]->addNeighbor($cells[2]);
+      $cells[1]->addNeighbor($cells[2]);
     }
   }
 }
