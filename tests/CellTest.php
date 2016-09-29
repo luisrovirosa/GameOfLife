@@ -84,17 +84,6 @@ class CellTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function an_empty_cell_with_two_neighbors_becomes_populates() {
-    $cell = new EmptyCell();
-    $cell->addNeighbor(new PopulatedCell());
-    $cell->addNeighbor(new PopulatedCell());
-
-    $nextDayCell = $cell->nextDay();
-
-    $this->assertEquals(new PopulatedCell(), $nextDayCell);
-  }
-
-  /** @test */
   public function an_empty_cell_with_three_neighbors_becomes_populates() {
     $cell = new EmptyCell();
     $cell->addNeighbor(new PopulatedCell());
