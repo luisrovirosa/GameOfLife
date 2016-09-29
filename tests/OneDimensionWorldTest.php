@@ -14,7 +14,7 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
 
     new World($cells);
 
-    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
   }
 
   /** @test */
@@ -25,7 +25,7 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
 
     new World($cells);
 
-    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
   }
 
   /** @test */
@@ -36,7 +36,7 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
 
     new World($cells);
 
-    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
   }
 
   /** @test */
@@ -47,7 +47,7 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
 
     new World($cells);
 
-    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
   }
 
   /** @test */
@@ -58,7 +58,7 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
 
     new World($cells);
 
-    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
   }
 
   /** @test */
@@ -69,7 +69,7 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
 
     new World($cells);
 
-    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
   }
 
   /** @test */

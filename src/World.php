@@ -30,6 +30,7 @@ class World {
         $this->connectsNextCell($file, $column);
         $this->connectsPreviousCell($file, $column);
         $this->connectsBottomCell($file, $column);
+        $this->connectsUpperCell($file, $column);
       }
     }
   }

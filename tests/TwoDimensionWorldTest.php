@@ -14,7 +14,7 @@ class TwoDimensionWorldTest extends \PHPUnit_Framework_TestCase {
 
     new World($cells);
 
-    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
   }
 
   /** @test */
@@ -25,6 +25,17 @@ class TwoDimensionWorldTest extends \PHPUnit_Framework_TestCase {
 
     new World($cells);
 
-    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalledTimes(1);
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
+  }
+
+  /** @test */
+  public function with_three_cells_in_column_connects_the_second_cell_with_the_first() {
+    $cellProphecy = $this->prophesize(Cell::class);
+    $neighbor = $this->prophesize(Cell::class)->reveal();
+    $cells = [[$neighbor], [$cellProphecy->reveal()], [$this->prophesize(Cell::class)->reveal()]];
+
+    new World($cells);
+
+    $cellProphecy->addNeighbor($neighbor)->shouldHaveBeenCalled();
   }
 }
