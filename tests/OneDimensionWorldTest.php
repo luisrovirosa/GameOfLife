@@ -5,9 +5,9 @@ namespace GameOfLife\Tests;
 use GameOfLife\Cell;
 use GameOfLife\World;
 
-class WorldTest extends \PHPUnit_Framework_TestCase {
+class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
   /** @test */
-  public function a_one_dimension_world_with_two_cells_connects_the_first_cell_with_the_second() {
+  public function with_two_cells_connects_the_first_cell_with_the_second() {
     $cellProphecy = $this->prophesize(Cell::class);
     $neighbor = $this->prophesize(Cell::class)->reveal();
     $cells = [$cellProphecy->reveal(), $neighbor];
@@ -18,7 +18,7 @@ class WorldTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_one_dimension_world_with_two_cells_connects_the_second_cell_with_the_first() {
+  public function with_two_cells_connects_the_second_cell_with_the_first() {
     $cellProphecy = $this->prophesize(Cell::class);
     $neighbor = $this->prophesize(Cell::class)->reveal();
     $cells = [$neighbor, $cellProphecy->reveal()];
@@ -29,7 +29,7 @@ class WorldTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_one_dimension_world_with_three_cells_connects_the_first_cell_with_the_third() {
+  public function with_three_cells_connects_the_first_cell_with_the_third() {
     $cellProphecy = $this->prophesize(Cell::class);
     $neighbor = $this->prophesize(Cell::class)->reveal();
     $cells = [$cellProphecy->reveal(), $this->prophesize(Cell::class)->reveal(), $neighbor];
@@ -40,7 +40,7 @@ class WorldTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_one_dimension_world_with_three_cells_connects_the_second_cell_with_the_third() {
+  public function with_three_cells_connects_the_second_cell_with_the_third() {
     $cellProphecy = $this->prophesize(Cell::class);
     $neighbor = $this->prophesize(Cell::class)->reveal();
     $cells = [$this->prophesize(Cell::class)->reveal(), $cellProphecy->reveal(), $neighbor];
@@ -51,7 +51,7 @@ class WorldTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_one_dimension_world_with_three_cells_connects_the_third_cell_with_the_first() {
+  public function with_three_cells_connects_the_third_cell_with_the_first() {
     $cellProphecy = $this->prophesize(Cell::class);
     $neighbor = $this->prophesize(Cell::class)->reveal();
     $cells = [$neighbor, $this->prophesize(Cell::class)->reveal(), $cellProphecy->reveal()];
@@ -62,7 +62,7 @@ class WorldTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_one_dimension_world_with_three_cells_connects_the_third_cell_with_the_second() {
+  public function with_three_cells_connects_the_third_cell_with_the_second() {
     $cellProphecy = $this->prophesize(Cell::class);
     $neighbor = $this->prophesize(Cell::class)->reveal();
     $cells = [$this->prophesize(Cell::class)->reveal(), $neighbor, $cellProphecy->reveal()];
@@ -84,7 +84,7 @@ class WorldTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function a_one_dimension_world_with_four_cells_is_not_connected_the_first_and_the_third() {
+  public function with_four_cells_is_not_connected_the_first_and_the_third() {
     $cellProphecy = $this->prophesize(Cell::class);
     $neighbor = $this->prophesize(Cell::class)->reveal();
     $cells = [
