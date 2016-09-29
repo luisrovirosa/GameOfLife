@@ -17,6 +17,13 @@ class World {
     $this->initialize();
   }
 
+  public function nextDay() {
+    /** @var Cell $cell */
+    foreach ($this->cells as $cell) {
+      $cell->nextDay();
+    }
+  }
+
   private function initialize() {
     for ($i = 0; $i < count($this->cells); $i++) {
       $this->connectsNextCell($i);
@@ -49,12 +56,5 @@ class World {
       return;
     }
     $this->cells[$cellIndex]->addNeighbor($this->cells[$neighborIndex]);
-  }
-
-  public function nextDay() {
-    /** @var Cell $cell */
-    foreach ($this->cells as $cell) {
-      $cell->nextDay();
-    }
   }
 }
