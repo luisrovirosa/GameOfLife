@@ -112,7 +112,11 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function next_day_calls_next_day_of_the_second_cell() {
     $cellProphecy = $this->prophesize(Cell::class);
-    $cells = [$this->prophesize(Cell::class)->reveal(), $cellProphecy->reveal()];
+    $cells = [
+      $this->prophesize(Cell::class)->reveal(),
+      $cellProphecy->reveal(),
+      $this->prophesize(Cell::class)->reveal()  
+    ];
 
     (new World($cells))->nextDay();
 
@@ -122,8 +126,11 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function next_day_calls_next_day_of_the_third_cell() {
     $cellProphecy = $this->prophesize(Cell::class);
-    $cells = [$this->prophesize(Cell::class)->reveal(),
-      $this->prophesize(Cell::class)->reveal(), $cellProphecy->reveal()];
+    $cells = [
+      $this->prophesize(Cell::class)->reveal(),
+      $this->prophesize(Cell::class)->reveal(),
+      $cellProphecy->reveal()
+    ];
 
     (new World($cells))->nextDay();
 
