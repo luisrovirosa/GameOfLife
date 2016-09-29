@@ -4,7 +4,7 @@ namespace GameOfLife;
 
 class World {
   /**
-   * @var array
+   * @var Cell[][]
    */
   private $cells;
 
@@ -19,13 +19,13 @@ class World {
 
   public function nextDay() {
     /** @var Cell $cell */
-    foreach ($this->cells as $cell) {
+    foreach ($this->cells[0] as $cell) {
       $cell->nextDay();
     }
   }
 
   private function initialize() {
-    for ($i = 0; $i < count($this->cells); $i++) {
+    for ($i = 0; $i < count($this->cells[0]); $i++) {
       $this->connectsNextCell($i);
       $this->connectsPreviousCell($i);
     }
@@ -35,15 +35,15 @@ class World {
    * @param $i
    */
   private function connectsNextCell($i) {
-    $this->addNeighbor($i, ($i + 1) % count($this->cells));
+    $this->addNeighbor($i, ($i + 1) % count($this->cells[0]));
   }
 
   /**
    * @param $i
    */
   private function connectsPreviousCell($i) {
-    if (count($this->cells) != 2) {
-      $this->addNeighbor($i, ($i + count($this->cells) - 1) % count($this->cells));
+    if (count($this->cells[0]) != 2) {
+      $this->addNeighbor($i, ($i + count($this->cells[0]) - 1) % count($this->cells[0]));
     }
   }
 
@@ -55,6 +55,6 @@ class World {
     if ($cellIndex == $neighborIndex) {
       return;
     }
-    $this->cells[$cellIndex]->addNeighbor($this->cells[$neighborIndex]);
+    $this->cells[0][$cellIndex]->addNeighbor($this->cells[0][$neighborIndex]);
   }
 }
