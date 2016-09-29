@@ -52,12 +52,9 @@ class World {
   }
 
   public function nextDay() {
-    $this->cells[0]->nextDay();
-    if (count($this->cells) >= 2) {
-      $this->cells[1]->nextDay();
-    }
-    if (count($this->cells) == 3) {
-      $this->cells[2]->nextDay();
+    /** @var Cell $cell */
+    foreach ($this->cells as $cell) {
+      $cell->nextDay();
     }
   }
 }
