@@ -56,5 +56,8 @@ class World {
     if (count($this->cells) == 2) {
       $this->cells[1]->nextDay();
     }
+    if (count($this->cells) == 3) {
+      $this->cells[2]->nextDay();
+    }
   }
 }
