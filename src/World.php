@@ -23,6 +23,7 @@ class World {
       $cell = $this->cells[0][$i];
       $this->cells[0][$i] = $cell->nextDay();
     }
+    $this->initialize();
   }
 
   private function initialize() {

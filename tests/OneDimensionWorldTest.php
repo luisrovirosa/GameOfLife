@@ -3,7 +3,9 @@
 namespace GameOfLife\Tests;
 
 use GameOfLife\Cell;
+use GameOfLife\EmptyCell;
 use GameOfLife\World;
+use Prophecy\Argument;
 
 class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
   /** @test */
@@ -155,6 +157,20 @@ class OneDimensionWorldTest extends \PHPUnit_Framework_TestCase {
     $world->nextDay();
 
     $nextDayCellProphecy->nextDay()->shouldHaveBeenCalled();
+  }
+
+  /** @test */
+  public function next_day_sets_the_neighbors_of_the_resulting_cells() {
+    $cellProphecy = $this->prophesize(Cell::class);
+    $nextDayCellProphecy = $this->prophesize(Cell::class);
+    $cellProphecy->nextDay()->willReturn($nextDayCellProphecy->reveal());
+    $cellProphecy->addNeighbor(Argument::any())->shouldBeCalled();
+    $cells = [[$cellProphecy->reveal(), new EmptyCell()]];
+    $world = (new World($cells));
+
+    $world->nextDay();
+
+    $nextDayCellProphecy->addNeighbor(Argument::any())->shouldHaveBeenCalled();
   }
 
 }
